@@ -1,0 +1,17 @@
+<a href='/users'>Dashboard</a>
+<a href='/logout'data-method='delete'>Log Out</a>
+<hr>
+
+<h1>Others who added <%=@song.artist%> - <%=@song.title%></h1>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Times Added</th>
+    </tr>
+    <% @song.users_added.uniq.each do |user| %>
+    <tr>
+      <td><a href='/co_users/<%=user.id%>'><%=user.first_name.titleize %> <%=user.last_name.titleize %></a></td>
+      <td><%=@song.users_added.where(id:user.id).count%></td>
+    </tr>
+    <% end %>
+  </table>

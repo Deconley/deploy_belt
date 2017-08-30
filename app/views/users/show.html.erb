@@ -1,0 +1,20 @@
+<a href='/users'>Dashboard</a>
+<a href='/logout'data-method='delete'>Log Out</a>
+<hr>
+<div>
+<h1><%= @user.first_name.titleize %> <%= @user.last_name.titleize %>'s Playlist</h1>
+  <table>
+    <tr>
+      <th>Artist</th>
+      <th>Title</th>
+      <th>Times Added</th>
+    </tr>
+  <% @user.songs_added.uniq.each do |song| %>
+    <tr>
+      <td><%=song.artist%></td>
+      <td><%=song.title%></td>
+      <td><%=@user.songs_added.where(id:song).count%></td>
+    </tr>
+  </table>
+<% end %>
+</div>
